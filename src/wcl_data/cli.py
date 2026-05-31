@@ -22,6 +22,7 @@ from typing import Optional
 import requests
 
 from . import logging_setup
+from .logging_setup import reconfigure_stdio_utf8 as _reconfigure_stdio_utf8
 from .api.client import APIClient, AuthFailureAbort
 from .config import load_settings
 from .db.repository import Repository
@@ -505,26 +506,6 @@ def _cmd_export(
     finally:
         conn.close()
     return 0
-
-
-def _reconfigure_stdio_utf8() -> None:
-    """Force stdout/stderr to UTF-8 on Windows so non-ASCII (Žilina, St. Pölten,
-    🧗) in printed warehouse content doesn't crash on the default cp1252 console.
-
-    Best-effort: pytest's capsys and other test/redirect substitutes wrap the
-    streams in objects that either don't expose `.reconfigure()` (AttributeError)
-    or have it but can't honor the call — closed/detached streams raise OSError
-    or ValueError. All three are swallowed; this is best-effort, not a hard
-    requirement. POSIX terminals are UTF-8 by default — no-op there.
-    """
-    if sys.platform != "win32":
-        return
-    for stream in (sys.stdout, sys.stderr):
-        try:
-            stream.reconfigure(encoding="utf-8")
-        except (AttributeError, OSError, ValueError):
-            # Captured / wrapped / closed stream — nothing to do; leave it alone.
-            pass
 
 
 def _print_summary(summary: dict[str, tuple[int, int]], *, file=None) -> None:
