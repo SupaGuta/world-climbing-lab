@@ -15,14 +15,20 @@ edited in place as code changes.
 docs/
 ├── README.md                         ← you are here
 ├── contributing.md                   ← dev setup, tests, conventions, add-a-fetcher walkthrough
-├── architecture/                     ← current snapshot of the system (the why)
-│   ├── overview.md                   ← system map + lifecycle of one ingest run
-│   ├── ingestion-pipeline.md         ← discover → hydrate cycle, refresh vs pull-new vs hydrate
-│   ├── api-client.md                 ← streaming client, retry policy, concurrency
-│   ├── database-and-schema.md        ← tables, staleness, transactional boundary
-│   ├── layer-0-surface.md            ← the contract for downstream consumers: stable surface, guarantees, hors-scope
-│   └── parsing-and-heuristics.md     ← event-name parsing, paraclimbing heuristic, lossy data
-├── decisions/                        ← ADR-style record of non-obvious choices
+├── architecture/                     ← per-layer system snapshots (the why)
+│   ├── ingestion/                    ← Layer 0 ingestion package (wcl_data)
+│   │   ├── overview.md               ← system map + lifecycle of one ingest run
+│   │   ├── ingestion-pipeline.md     ← discover → hydrate cycle, refresh vs pull-new vs hydrate
+│   │   ├── api-client.md             ← streaming client, retry policy, concurrency
+│   │   ├── database-and-schema.md    ← tables, staleness, transactional boundary
+│   │   ├── layer-0-surface.md        ← the contract for downstream consumers: stable surface, guarantees, hors-scope
+│   │   └── parsing-and-heuristics.md ← event-name parsing, paraclimbing heuristic, lossy data
+│   └── analysis/                     ← analysis-layer architecture (placeholder; wcl_analytics+)
+├── analysis/                         ← analysis specs and generated outputs
+│   ├── README.md
+│   ├── profiling-spec.md             ← spec for the wcl_analytics data-profiling module
+│   └── data-profile.md               ← generated warehouse profile (rebuilt from script)
+├── decisions/                        ← ADR-style record of non-obvious choices (shared journal across layers)
 │   ├── README.md                     ← what an ADR is + template
 │   ├── 0001-single-sqlite-warehouse.md
 │   ├── 0002-streaming-writes.md
@@ -88,26 +94,26 @@ docs/
 - **"How do I keep credentials / logs / backups healthy?"**
   [operations/](operations/README.md) — one page per topic.
 - **"I want to extend the code."** [contributing.md](contributing.md)
-  → [architecture/overview.md](architecture/overview.md) → the relevant
+  → [architecture/ingestion/overview.md](architecture/ingestion/overview.md) → the relevant
   architecture page → the relevant ADR.
 - **"Why is it shaped this way?"**
-  [architecture/](architecture/overview.md) for the design,
+  [architecture/ingestion/](architecture/ingestion/overview.md) for the design,
   [decisions/](decisions/README.md) for the trade-offs each design choice locked
   in.
 
 ## Where to start by role
 
 - **New contributor:** [contributing.md](contributing.md) →
-  [architecture/overview.md](architecture/overview.md)
+  [architecture/ingestion/overview.md](architecture/ingestion/overview.md)
 - **Trying to extend ingestion:**
-  [architecture/ingestion-pipeline.md](architecture/ingestion-pipeline.md)
+  [architecture/ingestion/ingestion-pipeline.md](architecture/ingestion/ingestion-pipeline.md)
   → [contributing.md](contributing.md) (add-a-fetcher section)
 - **Touching the DB layer:**
-  [architecture/database-and-schema.md](architecture/database-and-schema.md)
+  [architecture/ingestion/database-and-schema.md](architecture/ingestion/database-and-schema.md)
   + ADRs [0002](decisions/0002-streaming-writes.md),
   [0005](decisions/0005-transactional-boundary-on-competitions.md)
 - **Touching the HTTP layer:**
-  [architecture/api-client.md](architecture/api-client.md) + ADR
+  [architecture/ingestion/api-client.md](architecture/ingestion/api-client.md) + ADR
   [0003](decisions/0003-selective-4xx-skip-retry.md)
 - **Downstream consumer (notebooks, ML pipeline):**
   [data-dictionary/](data-dictionary/README.md) →

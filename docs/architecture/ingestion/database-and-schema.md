@@ -5,7 +5,7 @@ No migrations framework, no ORM, no external DB server. The schema is defined
 in `src/wcl_data/db/schema.py` as one `CREATE TABLE IF NOT EXISTS` script
 that runs on every connection open via `apply_schema()`. The rationale for
 the single-file SQLite choice is in
-[ADR 0001](../decisions/0001-single-sqlite-warehouse.md).
+[ADR 0001](../../decisions/0001-single-sqlite-warehouse.md).
 
 ## Tables
 
@@ -56,7 +56,7 @@ skeleton rows are sometimes created before their parents are fully hydrated.
 ## Staleness via `last_fetched_at`
 
 The whole incremental-update story (see
-[ADR 0004](../decisions/0004-incremental-hydration-with-staleness.md)) is
+[ADR 0004](../../decisions/0004-incremental-hydration-with-staleness.md)) is
 built on this one column.
 
 - **Format:** `"%Y-%m-%dT%H:%M:%SZ"` (ISO-8601 with explicit `Z`).
@@ -91,7 +91,7 @@ def _maybe_commit(self) -> None:
 
 Per-row commit is what makes `Ctrl-C` safe: the in-flight HTTP request loses
 its data, but every row written before it is durable. See
-[ADR 0002](../decisions/0002-streaming-writes.md).
+[ADR 0002](../../decisions/0002-streaming-writes.md).
 
 **The exception is `competitions.hydrate`.** It wraps each competition's
 work-unit in a transaction — covering both the `results` write and the
@@ -111,9 +111,9 @@ The `delete + reinsert` pattern means a partial failure mid-loop would leave
 the competition with empty per-round tables and a NULL `last_fetched_at`. The
 transaction rolls back all of these on exception, so either everything lands
 or nothing does. See
-[ADR 0005](../decisions/0005-transactional-boundary-on-competitions.md) for
+[ADR 0005](../../decisions/0005-transactional-boundary-on-competitions.md) for
 the original rationale and
-[ADR 0007](../decisions/0007-per-round-ingestion.md) for the per-round
+[ADR 0007](../../decisions/0007-per-round-ingestion.md) for the per-round
 extension.
 
 Nested transactions are flattened: only the outermost commits. This matters

@@ -39,7 +39,7 @@ with ThreadPoolExecutor(max_workers=self.settings.max_workers) as pool:
 The yield is what makes streaming work: the calling fetcher receives one
 result at a time and commits to SQLite between iterations. A `Ctrl-C` loses
 only the in-flight row, never the batch. See
-[ADR 0002](../decisions/0002-streaming-writes.md) for the design rationale.
+[ADR 0002](../../decisions/0002-streaming-writes.md) for the design rationale.
 
 ## Concurrency
 
@@ -64,7 +64,7 @@ thread-safe for GET; we never do anything else.
 
 ## Retry policy
 
-Retries are **selective** — see [ADR 0003](../decisions/0003-selective-4xx-skip-retry.md)
+Retries are **selective** — see [ADR 0003](../../decisions/0003-selective-4xx-skip-retry.md)
 for the full motivation. The short version:
 
 | Failure                          | Treated as | Retry? |

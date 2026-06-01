@@ -55,7 +55,7 @@ ISO 3166-1 alpha-3-only aggregations and joins to non-IFSC datasets,
 events and athletes also carry `country_iso3`, derived by
 `to_iso3(country)` via the static `IFSC_TO_ISO3` map. Codes already
 matching ISO3 pass through unchanged. See
-[ADR 0008](../decisions/0008-country-iso3-sibling-column.md) for the
+[ADR 0008](../../decisions/0008-country-iso3-sibling-column.md) for the
 dual-column rationale.
 
 The city half is a *segment-based* extraction: once an anchor is found, take

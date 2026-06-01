@@ -8,7 +8,7 @@ control. The individual fetcher modules also expose their `hydrate()`
 function for narrowly-scoped work.
 
 For the design (discover-vs-hydrate, three CLI modes) see
-[`../architecture/ingestion-pipeline.md`](../architecture/ingestion-pipeline.md).
+[`../architecture/ingestion/ingestion-pipeline.md`](../architecture/ingestion/ingestion-pipeline.md).
 
 ## Boilerplate
 

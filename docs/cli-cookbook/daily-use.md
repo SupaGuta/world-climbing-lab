@@ -2,7 +2,7 @@
 
 Recipes for the three ingestion commands: `pull-new`, `refresh`,
 `hydrate <entity>`. For the *why* behind these three modes existing, see
-[`../architecture/ingestion-pipeline.md`](../architecture/ingestion-pipeline.md).
+[`../architecture/ingestion/ingestion-pipeline.md`](../architecture/ingestion/ingestion-pipeline.md).
 
 ## Catch new World Climbing content (the everyday command)
 
@@ -112,7 +112,7 @@ Beyond ~100 you start running into World Climbing's connection limits without
 measurable speedup. Below 30 you're leaving throughput on the table.
 
 The flag sizes both the `ThreadPoolExecutor` and the urllib3 connection
-pool — see [`../architecture/api-client.md`](../architecture/api-client.md)
+pool — see [`../architecture/ingestion/api-client.md`](../architecture/ingestion/api-client.md)
 for why both numbers matter.
 
 ## See what's in the DB

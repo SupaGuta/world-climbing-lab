@@ -115,7 +115,7 @@ populated.
 For a real schema change, edit `src/wcl_data/db/schema.py`, increment
 `CURRENT_VERSION`, and (eventually) add a migrations folder. As of now
 there's no migration framework — see
-[`../architecture/database-and-schema.md`](../architecture/database-and-schema.md).
+[`../architecture/ingestion/database-and-schema.md`](../architecture/ingestion/database-and-schema.md).
 
 ## Total reset (nuclear option)
 

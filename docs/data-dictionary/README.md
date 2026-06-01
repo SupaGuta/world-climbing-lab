@@ -7,7 +7,7 @@ missing.
 
 For the *why* of the schema design (single SQLite file, staleness model,
 transactional boundary on competitions) see
-[`../architecture/database-and-schema.md`](../architecture/database-and-schema.md)
+[`../architecture/ingestion/database-and-schema.md`](../architecture/ingestion/database-and-schema.md)
 and the relevant ADRs.
 
 ## Tables
@@ -99,7 +99,7 @@ denominator.
 ## What's *not* in the warehouse
 
 For the full Layer 0 surface contract (stable tables, guarantees, hors-scope),
-see [`../architecture/layer-0-surface.md`](../architecture/layer-0-surface.md).
+see [`../architecture/ingestion/layer-0-surface.md`](../architecture/ingestion/layer-0-surface.md).
 The bullets below summarize the main exclusions.
 
 - **Startlists and starting orders.** The API exposes

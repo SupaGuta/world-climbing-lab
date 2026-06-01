@@ -75,11 +75,11 @@ nav:
   - Home: README.md
   - Contributing: contributing.md
   - Architecture:
-      - Overview: architecture/overview.md
-      - Ingestion pipeline: architecture/ingestion-pipeline.md
-      - API client: architecture/api-client.md
-      - Database & schema: architecture/database-and-schema.md
-      - Parsing & heuristics: architecture/parsing-and-heuristics.md
+      - Overview: architecture/ingestion/overview.md
+      - Ingestion pipeline: architecture/ingestion/ingestion-pipeline.md
+      - API client: architecture/ingestion/api-client.md
+      - Database & schema: architecture/ingestion/database-and-schema.md
+      - Parsing & heuristics: architecture/ingestion/parsing-and-heuristics.md
   - Decisions (ADRs):
       - Index: decisions/README.md
       - 0001 — Single SQLite warehouse: decisions/0001-single-sqlite-warehouse.md

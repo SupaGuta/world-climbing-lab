@@ -105,7 +105,7 @@ A few specifics worth knowing:
   `competitions` → `events` and read
   [`events.is_paraclimbing`](events.md), which comes from the
   unambiguous `is_paraclimbing_event` API field. See
-  [`../architecture/parsing-and-heuristics.md`](../architecture/parsing-and-heuristics.md).
+  [`../architecture/ingestion/parsing-and-heuristics.md`](../architecture/ingestion/parsing-and-heuristics.md).
 - **Gender is INTEGER, not TEXT**, for consistency with the `categories.gender`
   column. The CSV exports (`exporter.VIEWS["athletes"]`) translate back to
   `"male"` / `"female"` strings via a `CASE` expression.

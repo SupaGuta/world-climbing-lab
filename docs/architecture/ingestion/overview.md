@@ -89,12 +89,12 @@ Five tables are **hydratable** (carry `last_fetched_at`): `seasons`,
   rewritten on every parent hydration; no staleness needed.
 - **Derived data** wiped + reinserted as a side effect of a parent's
   hydration: `results` (per competition — see
-  [ADR 0005](../decisions/0005-transactional-boundary-on-competitions.md));
+  [ADR 0005](../../decisions/0005-transactional-boundary-on-competitions.md));
   the per-round family added in
-  [ADR 0007](../decisions/0007-per-round-ingestion.md) (`category_rounds`,
+  [ADR 0007](../../decisions/0007-per-round-ingestion.md) (`category_rounds`,
   `round_stages`, `routes`, `round_results`, `stage_results`, `ascents`);
   and `cup_rankings` (per athlete — see
-  [ADR 0009](../decisions/0009-athletes-payload-expansion.md)).
+  [ADR 0009](../../decisions/0009-athletes-payload-expansion.md)).
 
 See [database-and-schema.md](database-and-schema.md) for the full
 table-by-table reference.
@@ -149,4 +149,4 @@ warehouse (a few minutes if a backlog of new athletes has accumulated).
 - [database-and-schema.md](database-and-schema.md) — table-by-table reference and the transactional boundary
 - [layer-0-surface.md](layer-0-surface.md) — the contract Layer 0 exposes to downstream consumers (stable surface, guarantees, what's deliberately out of scope)
 - [parsing-and-heuristics.md](parsing-and-heuristics.md) — where the package guesses, and where it gives up rather than guess
-- [../decisions/](../decisions/README.md) — the *why* behind the design choices above
+- [../decisions/](../../decisions/README.md) — the *why* behind the design choices above

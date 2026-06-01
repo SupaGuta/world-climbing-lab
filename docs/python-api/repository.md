@@ -4,7 +4,7 @@ Typed CRUD wrappers around the SQLite warehouse. Lives in
 [`src/wcl_data/db/repository.py`](https://github.com/SupaGuta/world-climbing-lab/blob/main/src/wcl_data/db/repository.py).
 Every method commits before returning unless wrapped in `with
 repo.transaction():`. For the *why* see
-[`../architecture/database-and-schema.md`](../architecture/database-and-schema.md)
+[`../architecture/ingestion/database-and-schema.md`](../architecture/ingestion/database-and-schema.md)
 and [ADR 0002](../decisions/0002-streaming-writes.md).
 
 ## Constructing
@@ -141,7 +141,7 @@ athlete_id = repo.upsert_athlete_skeleton(ifsc_id=555)
 
 Upserts use `ON CONFLICT DO UPDATE` with `COALESCE(excluded.value, table.value)`
 so re-running with NULL fields doesn't blow away existing data. See
-[`../architecture/database-and-schema.md`](../architecture/database-and-schema.md)
+[`../architecture/ingestion/database-and-schema.md`](../architecture/ingestion/database-and-schema.md)
 for the pattern.
 
 ## Field updates

@@ -5,7 +5,7 @@ find the section that matches what you're trying to do.
 
 For the CLI reference (all flags, all options) see the root
 [`README.md`](https://github.com/SupaGuta/world-climbing-lab/blob/main/README.md). For the *why* behind each command's
-behavior, see [`../architecture/`](../architecture/overview.md) and the
+behavior, see [`../architecture/ingestion/`](../architecture/ingestion/overview.md) and the
 [ADRs](../decisions/README.md).
 
 ## Sections

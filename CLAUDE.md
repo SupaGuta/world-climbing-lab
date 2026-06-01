@@ -8,12 +8,14 @@ warehouse; sibling packages `wcl_analytics` / `wcl_ml` may land later.
 ## Read these first
 
 Before re-deriving understanding from `src/`, check **[`docs/README.md`](docs/README.md)** —
-a 36-file reference tree that already documents this codebase end-to-end:
+the reference tree that already documents this codebase end-to-end:
 
 - `docs/contributing.md` — dev setup, tests, code conventions, add-a-fetcher walkthrough
-- `docs/architecture/` — system snapshot (edit in place as code changes)
-- `docs/decisions/` — numbered ADRs 0001-0011, append-only
-- `docs/data-dictionary/` — per-table column reference with coverage stats
+- `docs/architecture/ingestion/` — Layer 0 ingestion (`wcl_data`) system snapshot
+- `docs/architecture/analysis/` — analysis-layer architecture (placeholder for now)
+- `docs/analysis/` — analysis specs and generated outputs (profiling, etc.)
+- `docs/decisions/` — numbered ADRs 0001-0011, append-only (shared journal across layers)
+- `docs/data-dictionary/` — per-table column reference with coverage stats (shared)
 - `docs/cli-cookbook/`, `docs/python-api/`, `docs/operations/` — task-oriented recipes
 
 If a doc contradicts the code, trust the code and fix the doc.

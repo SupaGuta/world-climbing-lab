@@ -28,11 +28,11 @@ downstream — do not extend Layer 0.
 - **Derived aggregates.** Season-end podium counts, athlete career arcs,
   rolling form, head-to-head records. The API's
   `discipline_podiums` / `all_results` / `world_championships_discipline_podiums`
-  blocks were explicitly rejected (see [ADR 0009](../decisions/0009-athletes-payload-expansion.md)).
+  blocks were explicitly rejected (see [ADR 0009](../../decisions/0009-athletes-payload-expansion.md)).
 - **Startlists and starting orders.** `/api/v1/routes/{id}/startlist` and
   per-stage starting orders are not ingested. A `last_fetched_at` hook
   existed on `category_rounds` / `routes` in schema v4 but was dropped in
-  v5 (see 2026-05-25 note on [ADR 0007](../decisions/0007-per-round-ingestion.md)).
+  v5 (see 2026-05-25 note on [ADR 0007](../../decisions/0007-per-round-ingestion.md)).
 - **`/cups/{id}` endpoint.** Cup standings are captured per athlete via
   `cup_rankings`, not via a top-down cup table.
 - **Judge, route-setter, official data.** Not consumed.
@@ -49,7 +49,7 @@ downstream — do not extend Layer 0.
 ## Stable surface (the contract)
 
 The 16 tables below are the stable surface as of **schema v5**. Per-column
-detail lives in [`../data-dictionary/`](../data-dictionary/README.md).
+detail lives in [`../data-dictionary/`](../../data-dictionary/README.md).
 
 | Table             | Stable since | Hydratable | Notes |
 |-------------------|:------------:|:----------:|-------|
@@ -84,7 +84,7 @@ will document the migration.
   competition IFSC ids are not globally unique. Every other hydratable
   table has `ifsc_id UNIQUE`. `athletes.ifsc_id` is unique *at any point
   in time*, but the IFSC reassigns deleted ids — see the `ifsc_id`
-  reassignment gotcha on [athletes.md](../data-dictionary/athletes.md).
+  reassignment gotcha on [athletes.md](../../data-dictionary/athletes.md).
 - **NULL semantics.** NULL means *we don't know*, never zero or false. A
   NULL on a populated field is almost always an upstream gap, not a parser
   bug. `last_fetched_at IS NULL` specifically means "skeleton — never
@@ -102,10 +102,10 @@ will document the migration.
   federation code, mix of ISO 3166-1 alpha-3 and IFSC/IOC variants) and
   `country_iso3` (canonical ISO 3166-1 alpha-3 only, derived via the
   `IFSC_TO_ISO3` map). NULL iff `country` is NULL. See
-  [ADR 0008](../decisions/0008-country-iso3-sibling-column.md).
+  [ADR 0008](../../decisions/0008-country-iso3-sibling-column.md).
 - **Score columns** are TEXT, not REAL. The API renders them as
   polymorphic strings (`"TOP"`, `"49+"`, `"7.75"`, `"4.82"`); parsing them
-  is downstream-consumer responsibility (see [ADR 0007](../decisions/0007-per-round-ingestion.md)).
+  is downstream-consumer responsibility (see [ADR 0007](../../decisions/0007-per-round-ingestion.md)).
 - **Foreign keys** are declared and `PRAGMA foreign_keys = ON` is set, but
   enforcement is not strict (skeleton rows may exist before parents are
   fully hydrated).
@@ -129,10 +129,10 @@ A schema-breaking change goes through:
 ## How to consume
 
 - **CLI:** `python -m wcl_data export` writes denormalized CSVs to
-  `data/exports/`. See the [README](../README.md) for view reference.
+  `data/exports/`. See the [README](../../README.md) for view reference.
 - **Python:** `wcl_data.config.load_settings()` → `wcl_data.db.schema.open_db(path)`
   → `wcl_data.db.repository.Repository(conn)`. See
-  [`../python-api/`](../python-api/README.md).
+  [`../../python-api/`](../../python-api/README.md).
 - **Raw SQL:** `sqlite3 data/wcl.sqlite` works fine; the per-table docs
   list all columns + types.
 
@@ -145,7 +145,7 @@ process other than `wcl_data`. Concurrent read-only access is safe.
   ingest run.
 - [`database-and-schema.md`](database-and-schema.md) — the design behind
   the schema, transactional boundaries, upsert pattern.
-- [`../data-dictionary/`](../data-dictionary/README.md) — per-column
+- [`../data-dictionary/`](../../data-dictionary/README.md) — per-column
   reference with coverage stats.
-- [`../decisions/`](../decisions/README.md) — every non-obvious choice has
+- [`../decisions/`](../../decisions/README.md) — every non-obvious choice has
   an ADR.

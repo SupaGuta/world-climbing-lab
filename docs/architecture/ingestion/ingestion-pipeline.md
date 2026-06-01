@@ -27,7 +27,7 @@ NULL) so the next phase has something to hydrate. There are two flavors:
    the next `lookahead` IDs (default 5) past it. On an empty DB it bootstraps
    by probing IDs 0–49 (`range(0, INITIAL_PROBE_RANGE)` with
    `INITIAL_PROBE_RANGE = 50`). 4xx responses are silently dropped (see
-   [ADR 0003](../decisions/0003-selective-4xx-skip-retry.md)) so non-existent
+   [ADR 0003](../../decisions/0003-selective-4xx-skip-retry.md)) so non-existent
    IDs don't burn retry budget.
 2. **Cascade discovery** — every other entity is discovered as a side effect
    of hydrating its parent. Hydrating a season inserts its `season_leagues`
@@ -86,7 +86,7 @@ ongoing containers** (current-year seasons → events within 15 days of
 skeletons get filled in.
 
 The "ongoing" predicate is deterministic — see
-[ADR 0006](../decisions/0006-ongoing-only-pull-new.md) for the full table
+[ADR 0006](../../decisions/0006-ongoing-only-pull-new.md) for the full table
 and rationale. In short: ended seasons never gain new leagues/events and
 ended events never gain new competitions, so re-fetching them is pure
 overhead. The 15-day grace period (configurable via `WCL_GRACE_DAYS` /
@@ -160,5 +160,5 @@ is:
 6. Add fixtures under `tests/fixtures/` and a test under
    `tests/test_fetchers/`.
 
-See [contributing.md](../contributing.md) for the full add-a-fetcher walkthrough
+See [contributing.md](../../contributing.md) for the full add-a-fetcher walkthrough
 using `athletes.py` as the canonical example.

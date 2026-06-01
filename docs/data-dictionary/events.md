@@ -56,7 +56,7 @@ Measured 2026-05-23 on hydrated rows only:
 
 The remaining city/country NULLs are events whose name doesn't match any of
 the city/country parser anchors and whose API fields are blank. See
-[../architecture/parsing-and-heuristics.md](../architecture/parsing-and-heuristics.md)
+[../architecture/ingestion/parsing-and-heuristics.md](../architecture/ingestion/parsing-and-heuristics.md)
 for the parser's rules and why it returns NULL rather than guessing.
 
 ## Gotchas

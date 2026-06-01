@@ -124,7 +124,7 @@ The full checklist:
    CSV is self-contained.
 
 9. **Docs** — update the table in
-   [architecture/database-and-schema.md](architecture/database-and-schema.md)
+   [architecture/ingestion/database-and-schema.md](architecture/ingestion/database-and-schema.md)
    and mention any non-obvious choices in a new ADR.
 
 ## Where logs go

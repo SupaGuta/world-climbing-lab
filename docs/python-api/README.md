@@ -62,5 +62,5 @@ settings = load_settings(require_credentials=False)
 ```
 
 For the *why* behind the package's shape see
-[`../architecture/`](../architecture/overview.md) and the
+[`../architecture/ingestion/`](../architecture/ingestion/overview.md) and the
 [ADRs](../decisions/README.md).
